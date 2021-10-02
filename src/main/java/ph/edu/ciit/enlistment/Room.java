@@ -1,17 +1,19 @@
 package ph.edu.ciit.enlistment;
 
-import java.util.*;
+import org.apache.commons.lang3.StringUtils;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.Validate.*;
 
 class Room {
     private final String name;
     private final int capacity;
 
-    Room (String name) {
+    Room(String name, int capacity) {
         isBlank(name);
         isTrue(StringUtils.isAlphanumeric(name),
                 "Room name must be alphanumeric, was: " + name);
+        this.capacity = capacity;
         this.name = name;
     }
 
