@@ -13,8 +13,9 @@ class Room {
         isBlank(name);
         isTrue(StringUtils.isAlphanumeric(name),
                 "Room name must be alphanumeric, was: " + name);
-        this.capacity = capacity;
+        isTrue(capacity>0, "Room Capacity must be greater than zero. It was: "+capacity);
         this.name = name;
+        this.capacity = capacity;
     }
 
     @Override
