@@ -20,11 +20,11 @@ class Student {
         this(studentNumber, Collections.emptyList());
     }
 
-    void enlist(Section section) {
-        notNull(section);
+    void enlist(Section newSection) {
+        notNull(newSection);
         /*compare the schedules of new section with the schedules of the existing sections,
         throw an exception if same schedule is found*/
-        sections.forEach(currSection -> { currSection.checkForConflict(newSection);});
+        sections.forEach(currSection -> currSection.checkForConflict(newSection));
         sections.add(newSection);
     }
 
