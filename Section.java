@@ -8,6 +8,7 @@ import static org.apache.commons.lang3.StringUtils.*;
 
 public class Section {
     private final String sectionId;
+    private final Room room;
 
     Section (String sectionId) {
         isBlank(sectionId);
@@ -37,4 +38,5 @@ public class Section {
     public int hashCode() {
         return sectionId != null ? sectionId.hashCode() : 0;
     }
+
 }
