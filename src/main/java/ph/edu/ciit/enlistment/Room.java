@@ -22,6 +22,11 @@ class Room {
         return new Room(this.name, this.capacity);
     }
 
+    //if my memory serves me right, a variable is okay to have getter and still encapsulated
+    int getCapacity(){
+        return capacity;
+    }
+
     @Override
     public String toString() {
         return String.format("Room name is %s, Capacity is %s", name, capacity);
