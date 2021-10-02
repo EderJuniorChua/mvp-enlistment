@@ -8,15 +8,23 @@ import static org.apache.commons.lang3.StringUtils.*;
 
 public class Section {
     private final String sectionId;
-    private final Room room;
+    private Room room;
 
     Section (String sectionId) {
         isBlank(sectionId);
         isTrue(StringUtils.isAlphanumeric(sectionId),
                 "sectionId must be alphanumeric, was: " + sectionId);
         this.sectionId = sectionId;
-
     }
+
+    Section (String sectionId, Room room) {
+        isBlank(sectionId);
+        isTrue(StringUtils.isAlphanumeric(sectionId),
+                "sectionId must be alphanumeric, was: " + sectionId);
+        this.sectionId = sectionId;
+        this.room = room;
+    }
+
 
     @Override
     public String toString() {
