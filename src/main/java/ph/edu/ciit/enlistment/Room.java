@@ -23,4 +23,6 @@ class Room {
         return String.format("Room name is %s, Capacity is %s", name, capacity);
     }
 
+    //TODO: 4th bullet, may not exceed the capacity of the room. (can be copied from enlist())
+
 }
