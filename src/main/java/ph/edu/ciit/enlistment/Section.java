@@ -6,31 +6,41 @@ import org.apache.commons.lang3.StringUtils;
 import static org.apache.commons.lang3.Validate.*;
 import static org.apache.commons.lang3.StringUtils.*;
 
-public class Section {
+class Section {
     private final String sectionId;
+    private final Schedule schedule;
     private Room room;
 
-    Section (String sectionId) {
+    Section (String sectionId, Schedule schedule) {
         isBlank(sectionId);
         isTrue(StringUtils.isAlphanumeric(sectionId),
                 "sectionId must be alphanumeric, was: " + sectionId);
+        notNull(schedule);
         this.sectionId = sectionId;
+        this.schedule = schedule;
     }
 
-    Section (String sectionId, Room room) {
+    Section (String sectionId, Schedule schedule, Room room) {
         isBlank(sectionId);
         isTrue(StringUtils.isAlphanumeric(sectionId),
                 "sectionId must be alphanumeric, was: " + sectionId);
         this.sectionId = sectionId;
+        this.schedule = schedule;
         this.room = room;
     }
 
+    void checkForConflict(Section other) {
+        if (this.schedule.equals(other.schedule)) {
+            throw new ScheduleConflictException("current section: " + this +
+                    " has same schedule with new section " + other +
+                    " at schedule " + schedule);
+        }
+    }
 
     @Override
     public String toString() {
         return sectionId;
     }
-
 
     @Override
     public boolean equals(Object o) {
