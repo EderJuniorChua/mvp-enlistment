@@ -24,7 +24,7 @@ class Student {
         notNull(newSection);
         /*compare the schedules of new section with the schedules of the existing sections,
         throw an exception if same schedule is found*/
-        sections.forEach(currSection -> currSection.checkForConflict(newSection));
+        sections.forEach(currSection -> currSection.checkForScheduleConflict(newSection));
         sections.add(newSection);
     }
 

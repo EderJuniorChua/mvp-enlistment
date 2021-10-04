@@ -29,7 +29,7 @@ class Section {
         this.room = room;
     }
 
-    void checkForConflict(Section other) {
+    void checkForScheduleConflict(Section other) {
         if (this.schedule.equals(other.schedule)) {
             throw new ScheduleConflictException("current section: " + this +
                     " has same schedule with new section " + other +
