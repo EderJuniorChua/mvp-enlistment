@@ -28,6 +28,12 @@ class Student {
         sections.add(newSection);
     }
 
+    void delist(Section existingSection){
+        notNull(existingSection);
+        //I'm not sure but I think you should add exception in case the section does not exist in the first place.
+        sections.remove(existingSection);
+    }
+
     Collection<Section> getSections() {
         return new ArrayList<>(sections);
     }
