@@ -2,24 +2,38 @@ package ph.edu.ciit.enlistment;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Objects;
+
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.Validate.*;
 
 class Room {
     private final String name;
     private final int capacity;
+    private final Collection<Section> sections;
 
-    Room(String name, int capacity) {
+    Room(String name, int capacity, Collection<Section> sections) {
         isBlank(name);
         isTrue(StringUtils.isAlphanumeric(name),
                 "Room name must be alphanumeric, was: " + name);
         isTrue(capacity>0, "Room Capacity must be greater than zero. It was: "+capacity);
         this.name = name;
         this.capacity = capacity;
+        notNull(sections);
+        this.sections = new HashSet<>(sections);
+        this.sections.removeIf(Objects::isNull);
     }
 
+    Room (String name, int capacity) {
+        this(name, capacity, Collections.emptyList());
+    }
+
+
     Room getRoom(){
-        return new Room(this.name, this.capacity);
+        return new Room(this.name, this.capacity, this.sections);
     }
 
     //if my memory serves me right, a variable is okay to have getter and still encapsulated
