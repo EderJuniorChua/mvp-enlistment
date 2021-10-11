@@ -40,4 +40,15 @@ class StudentTest {
         assertThrows(ScheduleConflictException.class, () -> student.enlist(sec2));
 
     }
+
+    @Test
+    void enlist_in_section_to_overcapacity() {
+        Section section = new Section("A",new Schedule(Days.MTH, Period.H0830), new Room("RM603", 1))
+        Student student1  = new Student (1);
+        Student student2  = new Student (2);
+
+        student1(section);
+
+        assertThrows(SectionCapacityException.class, () -> student2.enlist(section));
+    }
 }

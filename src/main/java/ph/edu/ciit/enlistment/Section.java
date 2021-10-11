@@ -9,6 +9,7 @@ import static org.apache.commons.lang3.StringUtils.*;
 class Section {
     private final String sectionId;
     private final Schedule schedule;
+    private int numStudentsEnlisted = 0;
     private Room room;
 
     Section (String sectionId, Schedule schedule) {
@@ -42,6 +43,20 @@ class Section {
         return sectionId;
     }
 
+    void checkPrereq(Collection<Subject> subjectsTaken) {
+        notNull(subjectsTaken);
+        subject.checkPrereqs(subjectsTaken);
+    }
+
+    void incrementNumStudentEnlisted() {
+        room.checkCapacity(numStudentsEnlisted);
+        numStudentsEnlisted++;
+    }
+
+    void lock() { lock.lock(); }
+    void unlock() { lock.unlock(); }
+
+    void decrementNumStudentEnlisted() { numStudentsEnlisted--; }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -41,4 +41,23 @@ class Room {
         }
 
     }
+
+    void reserve(Sectionn newSection) {
+        sections.forEach(currSection -> {
+            if (currSection.hasScheduleConflict(newSection)) {
+                throw new ScheduleConflictException("New section " + newSection +
+                        " has a schedule conflict with current section " + currSection +
+                        " for room " + this);
+            }
+        });
+    }
+    void checkCapacity(int occupancy){
+        if (occupancy >= capacity) {
+            throw new SectionCapacityException(
+                    "occupancy of " + occupancy + " is at or exceeds capacity of " + capacity);
+            )
+        }
+    }
+
+
 }
