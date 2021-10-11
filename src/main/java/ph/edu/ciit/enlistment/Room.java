@@ -31,12 +31,18 @@ class Room {
         this(name, capacity, Collections.emptyList());
     }
 
+    void reserve(Section newSection) {
+        notNull(newSection);
+        /*compare the schedules of new section with the schedules of the existing sections,
+        throw an exception if same schedule is found*/
+        sections.forEach(currSection -> currSection.checkForScheduleConflict(newSection));
+        sections.add(newSection);
+    }
 
     Room getRoom(){
         return new Room(this.name, this.capacity, this.sections);
     }
 
-    //if my memory serves me right, a variable is okay to have getter and still encapsulated
     int getCapacity(){
         return capacity;
     }
