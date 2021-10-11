@@ -10,6 +10,7 @@ class Section {
     private final String sectionId;
     private final Schedule schedule;
     private Room room;
+    private Subject subject;
     //TODO: (Allen) 2. A section must have an instructor. A class Instructor is pre requisite.
     //TODO: (Allen) 3. An instructor cannot teach two or more sections with overlapping schedule. This is to be made in new instructor class.
 
