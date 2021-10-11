@@ -3,24 +3,21 @@ package ph.edu.ciit.enlistment;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Collections;
+
 import static org.apache.commons.lang3.Validate.*;
 import static org.apache.commons.lang3.StringUtils.*;
 
 class Section {
     private final String sectionId;
     private final Schedule schedule;
-    private Room room;
+    private final Room room;
     private Subject subject;
     //TODO: (Allen) 2. A section must have an instructor. A class Instructor is pre requisite.
     //TODO: (Allen) 3. An instructor cannot teach two or more sections with overlapping schedule. This is to be made in new instructor class.
 
     Section (String sectionId, Schedule schedule) {
-        isBlank(sectionId);
-        isTrue(StringUtils.isAlphanumeric(sectionId),
-                "sectionId must be alphanumeric, was: " + sectionId);
-        notNull(schedule);
-        this.sectionId = sectionId;
-        this.schedule = schedule;
+        this(sectionId, schedule, null);
     }
 
     Section (String sectionId, Schedule schedule, Room room) {
