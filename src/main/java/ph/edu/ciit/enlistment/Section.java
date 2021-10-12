@@ -20,12 +20,7 @@ class Section {
     //TODO: (Allen) 3. An instructor cannot teach two or more sections with overlapping schedule. This is to be made in new instructor class.
 
     Section (String sectionId, Schedule schedule) {
-        isBlank(sectionId);
-        isTrue(StringUtils.isAlphanumeric(sectionId),
-                "sectionId must be alphanumeric, was: " + sectionId);
-        notNull(schedule);
-        this.sectionId = sectionId;
-        this.schedule = schedule;
+        this(sectionId, schedule, null);
     }
 
     Section (String sectionId, Schedule schedule, Room room) {
@@ -33,10 +28,10 @@ class Section {
         isTrue(StringUtils.isAlphanumeric(sectionId),
                 "sectionId must be alphanumeric, was: " + sectionId);
         this.sectionId = sectionId;
+        notNull(schedule);
         this.schedule = schedule;
         this.room = room;
     }
-
 
     void checkSameSubject(Section other){
         notNull(other);
