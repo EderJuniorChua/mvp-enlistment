@@ -3,6 +3,9 @@ package ph.edu.ciit.enlistment;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.*;
+import java.util.concurrent.locks.*;
+
 import static org.apache.commons.lang3.Validate.*;
 import static org.apache.commons.lang3.StringUtils.*;
 
@@ -12,11 +15,17 @@ class Section {
     private int numStudentsEnlisted = 0;
     private Room room;
     private Subject subject;
+    private final ReentrantLock lock = new ReentrantLock();
     //TODO: (Allen) 2. A section must have an instructor. A class Instructor is pre requisite.
     //TODO: (Allen) 3. An instructor cannot teach two or more sections with overlapping schedule. This is to be made in new instructor class.
 
     Section (String sectionId, Schedule schedule) {
-        this(sectionId, schedule, null);
+        isBlank(sectionId);
+        isTrue(StringUtils.isAlphanumeric(sectionId),
+                "sectionId must be alphanumeric, was: " + sectionId);
+        notNull(schedule);
+        this.sectionId = sectionId;
+        this.schedule = schedule;
     }
 
     Section (String sectionId, Schedule schedule, Room room) {
@@ -24,23 +33,31 @@ class Section {
         isTrue(StringUtils.isAlphanumeric(sectionId),
                 "sectionId must be alphanumeric, was: " + sectionId);
         this.sectionId = sectionId;
-        notNull(schedule);
         this.schedule = schedule;
         this.room = room;
     }
 
-    boolean checkForScheduleConflict(Section other) {
-        if (this.schedule.equals(other.schedule)) {
-            throw new ScheduleConflictException("current section: " + this +
-                    " has same schedule with new section " + other +
-                    " at schedule " + schedule);
+
+    void checkSameSubject(Section other){
+        notNull(other);
+        if (this.subject.equals(other.subject)) {
+            throw new SameSubjectException(
+                    "This section " + this + "and other section " + other + " have same subject"
+            );
         }
+    }
+
+    boolean checkForScheduleConflict(Section other) {
+        notNull(other);
+        return this.schedule.hasOverlap(other);
     }
 
     @Override
     public String toString() {
         return sectionId;
     }
+
+    Schedule getSchedule() { return schedule; }
 
     void checkPrereq(Collection<Subject> subjectsTaken) {
         notNull(subjectsTaken);

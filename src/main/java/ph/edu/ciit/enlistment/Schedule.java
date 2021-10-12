@@ -35,6 +35,16 @@ class Schedule {
         result = 31 * result + (period != null ? period.hashCode() : 0);
         return result;
     }
+
+    boolean hasOverlap(Section other){
+        if (this.equals(other.getSchedule())) {
+            throw new ScheduleConflictException("current section: " + this +
+                    " has same schedule with new section " + other +
+                    " at schedule " + other.getSchedule());
+        }
+        return true;
+    }
+
 }
 
 enum Days {

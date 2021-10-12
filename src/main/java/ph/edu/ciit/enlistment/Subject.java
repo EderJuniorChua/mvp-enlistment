@@ -23,4 +23,8 @@ public class Subject {
         this.prerequisites = new HashSet<>(prerequisites);
         this.prerequisites.removeIf(Objects::isNull);
     }
+
+    public void checkPrereqs(Collection<Subject> subjectsTaken) {
+
+    }
 }

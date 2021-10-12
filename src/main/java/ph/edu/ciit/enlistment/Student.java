@@ -25,14 +25,14 @@ class Student {
         /*compare the schedules of new section with the schedules of the existing sections,
         throw an exception if same schedule is found*/
         sections.forEach(currSection -> {
-            if (currSection.hasScheduleConflict(newSection)) {
+            if (currSection.checkForScheduleConflict(newSection)) {
                 throw new ScheduleConflictException("Current section " + currSection + " with schedule "
                     + currSection.getSchedule() + " has schedule conflict with new section " + newSection
                     + " at schedule " + newSection.getSchedule());
             }
         });
 
-        newSection.checkPrereq(subjectsTaken);
+        //newSection.checkPrereq(subjectsTaken);
         newSection.lock();
         try {
             newSection.incrementNumStudentEnlisted();
