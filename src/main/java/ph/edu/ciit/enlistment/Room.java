@@ -57,6 +57,9 @@ class Room {
     }
 
     void reserve(Section newSection) {
+        notNull(newSection);
+        /*compare the schedules of new section with the schedules of the existing sections,
+        throw an exception if same schedule is found*/
         sections.forEach(currSection -> {
             if (currSection.checkForScheduleConflict(newSection)) {
                 throw new ScheduleConflictException("New section " + newSection +
@@ -64,6 +67,7 @@ class Room {
                         " for room " + this);
             }
         });
+        sections.add(newSection);
     }
     void checkCapacity(int occupancy){
         if (occupancy >= capacity) {
