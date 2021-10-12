@@ -64,7 +64,7 @@ class Room {
 
     void reserve(Section newSection) {
         sections.forEach(currSection -> {
-            if (currSection.hasScheduleConflict(newSection)) {
+            if (currSection.checkForScheduleConflict(newSection)) {
                 throw new ScheduleConflictException("New section " + newSection +
                         " has a schedule conflict with current section " + currSection +
                         " for room " + this);
@@ -75,7 +75,7 @@ class Room {
         if (occupancy >= capacity) {
             throw new RoomOverCapacityException(
                     "occupancy of " + occupancy + " is at or exceeds capacity of " + capacity);
-            )
+
         }
     }
 
