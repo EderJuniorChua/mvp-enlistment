@@ -21,7 +21,7 @@ class Instructor {
 
     void procured_section(Section newSection) {
         notNull(newSection);
-        sections.forEach(currSection -> currSection.checkForScheduleConflict(newSection));
+        sections.forEach(currSection -> currSection.hasScheduleConflict(newSection));
         sections.add(newSection);
     }
 }

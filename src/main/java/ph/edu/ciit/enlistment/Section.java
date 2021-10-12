@@ -42,7 +42,7 @@ class Section {
         }
     }
 
-    boolean checkForScheduleConflict(Section other) {
+    boolean hasScheduleConflict(Section other) {
         notNull(other);
         return this.schedule.hasOverlap(other);
     }

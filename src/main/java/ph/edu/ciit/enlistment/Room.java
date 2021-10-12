@@ -61,7 +61,7 @@ class Room {
         /*compare the schedules of new section with the schedules of the existing sections,
         throw an exception if same schedule is found*/
         sections.forEach(currSection -> {
-            if (currSection.checkForScheduleConflict(newSection)) {
+            if (currSection.hasScheduleConflict(newSection)) {
                 throw new ScheduleConflictException("New section " + newSection +
                         " has a schedule conflict with current section " + currSection +
                         " for room " + this);
