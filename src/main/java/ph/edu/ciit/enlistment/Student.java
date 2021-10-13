@@ -47,8 +47,10 @@ class Student {
 
     void delist(Section existingSection){
         notNull(existingSection);
-        //I'm not sure but I think you should add exception in case the section does not exist in the first place.
-        sections.remove(existingSection);
+
+        if (!sections.contains(existingSection)) throw new StudentDelistException("error delisting " + existingSection + ", does not exist");
+        else sections.remove(existingSection);
+
     }
 
     Collection<Section> getSections() {
