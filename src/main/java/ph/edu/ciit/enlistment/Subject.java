@@ -3,6 +3,7 @@ package ph.edu.ciit.enlistment;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 
@@ -22,6 +23,10 @@ public class Subject {
         notNull(prerequisites);
         this.prerequisites = new HashSet<>(prerequisites);
         this.prerequisites.removeIf(Objects::isNull);
+    }
+
+    Subject(String subjectID){
+        this(subjectID, Collections.emptyList());
     }
 
     public void checkPrereqs(Collection<Subject> subjectsTaken) {
