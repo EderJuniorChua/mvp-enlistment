@@ -25,6 +25,11 @@ public class Subject {
     }
 
     public void checkPrereqs(Collection<Subject> subjectsTaken) {
-
+        prerequisites.forEach(subject -> {
+            if(!subjectsTaken.contains(subject)) {
+                throw new PrerequisiteException("The subject : " + subjectID + " has prereqs "
+                        + prerequisites + " not yet taken");
+            }
+        });
     }
 }

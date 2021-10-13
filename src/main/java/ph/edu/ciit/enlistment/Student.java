@@ -7,17 +7,19 @@ import static org.apache.commons.lang3.Validate.*;
 class Student {
     private final int studentNumber;
     private final Collection<Section> sections;
+    private final Collection<Subject> subjectsTaken;
 
-    Student(int studentNumber, Collection<Section> sections) {
+    Student(int studentNumber, Collection<Section> sections, Collection<Subject> subjectsTaken) {
         isTrue(studentNumber >= 0,"studentNumber must be non-zero, was : " + studentNumber);
         notNull(sections);
         this.sections = new HashSet<>(sections);
         this.sections.removeIf(Objects::isNull);
+        this.subjectsTaken = new HashSet<>(subjectsTaken);
         this.studentNumber = studentNumber;
     }
 
     Student (int studentNumber) {
-        this(studentNumber, Collections.emptyList());
+        this(studentNumber, Collections.emptyList(), Collections.emptyList());
     }
 
     void enlist(Section newSection) {
@@ -33,7 +35,7 @@ class Student {
             currSection.checkSameSubject(newSection);
         });
 
-        //newSection.checkPrereq(subjectsTaken);
+        newSection.checkPrereq(subjectsTaken);
         newSection.lock();
         try {
             newSection.incrementNumStudentEnlisted();
