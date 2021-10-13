@@ -5,18 +5,18 @@ import java.util.*;
 import static org.apache.commons.lang3.Validate.*;
 
 class Instructor {
-    private final int ins_ID;
+    private final int instructorID;
     private final Collection<Section> sections;
 
-    Instructor(int ins_ID, Collection<Section> sections) {
+    Instructor(int instructorID, Collection<Section> sections) {
         notNull(sections);
         this.sections = new HashSet<>(sections);
         this.sections.removeIf(Objects::isNull);
-        this.ins_ID = ins_ID;
+        this.instructorID = instructorID;
     }
 
-    Instructor(int ins_ID) {
-        this(ins_ID, Collections.emptyList());
+    Instructor(int instructorID) {
+        this(instructorID, Collections.emptyList());
     }
 
     void procured_section(Section newSection) {
