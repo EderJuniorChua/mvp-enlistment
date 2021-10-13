@@ -30,6 +30,7 @@ class Student {
                     + currSection.getSchedule() + " has schedule conflict with new section " + newSection
                     + " at schedule " + newSection.getSchedule());
             }
+            currSection.checkSameSubject(newSection);
         });
 
         //newSection.checkPrereq(subjectsTaken);
