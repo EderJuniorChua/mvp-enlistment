@@ -51,4 +51,12 @@ class StudentTest {
 
         assertThrows(RoomOverCapacityException.class, () -> student2.enlist(section));
     }
+
+    @Test
+    void delist_unexisting_section(){
+        Student student1 = new Student(1);
+        Section section = new Section("A",new Schedule(Days.MTH, Period.H0830), new Room("RM603", 1));
+
+        assertThrows(ScheduleConflictException.class, () -> student1.delist(section));
+    }
 }
