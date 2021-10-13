@@ -57,6 +57,6 @@ class StudentTest {
         Student student1 = new Student(1);
         Section section = new Section("A",new Schedule(Days.MTH, Period.H0830), new Room("RM603", 1));
 
-        assertThrows(ScheduleConflictException.class, () -> student1.delist(section));
+        assertThrows(StudentDelistException.class, () -> student1.delist(section));
     }
 }
