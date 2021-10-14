@@ -30,6 +30,7 @@ class Section {
         this.sectionId = sectionId;
         notNull(schedule);
         this.schedule = schedule;
+        room.reserve(this);
         this.room = room;
     }
 
