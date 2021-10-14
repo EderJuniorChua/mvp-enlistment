@@ -28,6 +28,7 @@ class Section {
         room.reserve(this);
         this.room = room;
         this.subject = subject;
+        instructor.assign(this);
         this.instructor = instructor;
     }
 

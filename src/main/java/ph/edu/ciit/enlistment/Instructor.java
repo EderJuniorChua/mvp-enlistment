@@ -28,5 +28,19 @@ class Instructor {
         notNull(other);
         return this.schedule.hasOverlap(other);
     }
+
+    void assign(Section newSection) {
+        notNull(newSection);
+        /*compare the schedules of new section with the schedules of the existing sections,
+        throw an exception if same schedule is found*/
+        sections.forEach(currSection -> {
+            if (currSection.hasScheduleConflict(newSection)) {
+                throw new ScheduleConflictException("New section " + newSection +
+                        " has a schedule conflict with current section " + currSection +
+                        " for instructor " + this);
+            }
+        });
+        sections.add(newSection);
+    }
 }
 
