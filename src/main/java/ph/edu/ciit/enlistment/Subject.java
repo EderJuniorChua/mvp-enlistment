@@ -38,11 +38,6 @@ public class Subject {
         });
     }
 
-    boolean isSimilar(Subject subject){
-        if (this.equals(subject)) throw new SameSubjectException("subjects are the same");
-        return false;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
