@@ -13,7 +13,7 @@ class StudentTest {
         Student student  = new Student (1);
 
         Section sec1 = new Section("A", new Schedule(Days.MTH, Period.H0830), new Room("room1", 30), new Subject("sub1"));
-        Section sec2 = new Section("B", new Schedule(Days.TF, Period.H1000), new Room("room1", 30), new Subject("sub1"));
+        Section sec2 = new Section("B", new Schedule(Days.TF, Period.H1000), new Room("room1", 30), new Subject("sub2"));
         // When the student enlists in both sections
         student.enlist(sec1);
         student.enlist(sec2);
@@ -57,8 +57,6 @@ class StudentTest {
     void enlist_two_sections_same_subject(){
         Section section1= new Section("A",new Schedule(Days.MTH, Period.H1130), new Room("RM603", 1), new Subject("sub1"));
         Section section2 = new Section("B",new Schedule(Days.TF, Period.H1300), new Room("RM604", 1), new Subject("sub1"));
-        System.out.println(section1.getSchedule().toString());
-        System.out.println(section2.getSchedule().toString());
 
         Student student1 = new Student(1);
         student1.enlist(section1);

@@ -37,7 +37,7 @@ class Section {
 
     void checkSameSubject(Section other){
         notNull(other);
-        if (this.subject.equals(other.subject)) {
+        if (this.subject.isSimilar(other.subject)) {
             throw new SameSubjectException(
                     "This section " + this + "and other section " + other + " have same subject"
             );

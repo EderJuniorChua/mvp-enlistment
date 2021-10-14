@@ -37,4 +37,27 @@ public class Subject {
             }
         });
     }
+
+    boolean isSimilar(Subject subject){
+        if (this.equals(subject)) throw new SameSubjectException("subjects are the same");
+        return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Subject subject = (Subject) o;
+        return subjectID.equals(subject.subjectID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(subjectID);
+    }
+
+    @Override
+    public String toString() {
+        return "subject " + subjectID;
+    }
 }
