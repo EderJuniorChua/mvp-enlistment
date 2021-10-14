@@ -6,7 +6,6 @@ import static org.apache.commons.lang3.Validate.*;
 
 class Instructor {
     private int instructorID;
-    private Schedule schedule;
     private Collection<Section> sections;
 
     Instructor(int instructorID, Collection<Section> sections) {
