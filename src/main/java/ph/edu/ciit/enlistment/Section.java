@@ -23,7 +23,7 @@ class Section {
 //        this(sectionId, schedule, null);
 //    }
 
-    Section (String sectionId, Schedule schedule, Room room) {
+    Section (String sectionId, Schedule schedule, Room room, Subject subject) {
         isBlank(sectionId);
         isTrue(StringUtils.isAlphanumeric(sectionId),
                 "sectionId must be alphanumeric, was: " + sectionId);
@@ -32,6 +32,7 @@ class Section {
         this.schedule = schedule;
         room.reserve(this);
         this.room = room;
+        this.subject = subject;
     }
 
     void checkSameSubject(Section other){
