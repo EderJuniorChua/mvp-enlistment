@@ -65,6 +65,18 @@ class StudentTest {
     }
 
     @Test
+    void enlist_in_section_prerequisite_not_yet_taken(){
+        Collection<Subject> prMath2 = new HashSet<>();
+        prMath2.add(new Subject("math1"));
+
+        Subject subjectMath2 = new Subject("math2", prMath2);
+        Section section= new Section("A",new Schedule(Days.MTH, Period.H1130), new Room("RM603", 1), subjectMath2);
+        Student student1 = new Student(1);
+
+        assertThrows(PrerequisiteException.class, () -> student1.enlist(section));
+    }
+
+    @Test
     void delist_unexisting_section(){
         Student student1 = new Student(1);
         Section section = new Section("A",new Schedule(Days.MTH, Period.H0830), new Room("RM603", 1), new Subject("sub1"));
