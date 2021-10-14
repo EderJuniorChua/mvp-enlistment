@@ -33,8 +33,9 @@ class StudentTest {
         // Given a student and two sections with same sked
         Student student  = new Student (1);
         Instructor instructor = new Instructor(1, Collections.emptyList());
+        Instructor instructor2 = new Instructor(2, Collections.emptyList());
         Section sec1 = new Section("A", new Schedule(Days.MTH, Period.H0830), new Room("room1", 30), new Subject("sub1"), instructor);
-        Section sec2 = new Section("B", new Schedule(Days.MTH, Period.H0830), new Room("room2", 30), new Subject("sub1"), instructor);
+        Section sec2 = new Section("B", new Schedule(Days.MTH, Period.H0830), new Room("room2", 30), new Subject("sub1"), instructor2);
 
         // When student enlists in both sections
         student.enlist(sec1);
