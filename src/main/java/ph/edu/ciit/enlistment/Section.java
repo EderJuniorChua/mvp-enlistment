@@ -13,9 +13,9 @@ class Section {
     private final String sectionId;
     private final Schedule schedule;
     private int numStudentsEnlisted = 0;
-    private Room room;
-    private Subject subject;
-    private Instructor instructor;
+    private final Room room;
+    private final Subject subject;
+    private final Instructor instructor;
     private final ReentrantLock lock = new ReentrantLock();
 
     Section (String sectionId, Schedule schedule, Room room, Subject subject, Instructor instructor) {
