@@ -9,7 +9,7 @@ class Instructor {
     private Schedule schedule;
     private Collection<Section> sections;
 
-    Instructor(int instructorID, Collection<Section> sections, Schedule schedule) {
+    Instructor(int instructorID, Collection<Section> sections) {
         notNull(sections);
         isTrue(instructorID >= 0,"instructorID must be non-zero, was : " + instructorID);
         this.sections = new HashSet<>(sections);
