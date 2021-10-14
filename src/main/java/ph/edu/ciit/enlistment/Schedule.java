@@ -42,7 +42,7 @@ class Schedule {
                     " has same schedule with new section " + other +
                     " at schedule " + other.getSchedule());
         }
-        return true;
+        return false;
     }
 
 }
