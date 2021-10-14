@@ -15,16 +15,7 @@ class Instructor {
         this.sections = new HashSet<>(sections);
         this.sections.removeIf(Objects::isNull);
         this.instructorID = instructorID;
-        this.schedule = schedule;
     }
-
-    //remove this and change Test
-//    Instructor(int instructorID, int instructorID1, Schedule schedule, Collection<Section> sections) {
-//        this(instructorID, Collections.emptyList());
-//    }
-//
-//    public <T> Instructor(long instructorID, Collection<T> emptyList) {
-//    }
 
     void assign(Section newSection) {
         notNull(newSection);
