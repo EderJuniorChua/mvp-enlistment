@@ -16,6 +16,7 @@ class Instructor {
         this.instructorID = instructorID;
         this.schedule = schedule;
     }
+
     Instructor(int instructorID, int instructorID1, Schedule schedule, Collection<Section> sections) {
         this(instructorID, Collections.emptyList());
     }
@@ -27,5 +28,5 @@ class Instructor {
         notNull(other);
         return this.schedule.hasOverlap(other);
     }
-    }
+}
 

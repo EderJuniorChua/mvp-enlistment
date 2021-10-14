@@ -15,15 +15,10 @@ class Section {
     private int numStudentsEnlisted = 0;
     private Room room;
     private Subject subject;
+    private Instructor instructor;
     private final ReentrantLock lock = new ReentrantLock();
-    //TODO: (Allen) 2. A section must have an instructor. A class Instructor is pre requisite.
-    //TODO: (Allen) 3. An instructor cannot teach two or more sections with overlapping schedule. This is to be made in new instructor class.
 
-//    Section (String sectionId, Schedule schedule) {
-//        this(sectionId, schedule, null);
-//    }
-
-    Section (String sectionId, Schedule schedule, Room room, Subject subject) {
+    Section (String sectionId, Schedule schedule, Room room, Subject subject, Instructor instructor) {
         isBlank(sectionId);
         isTrue(StringUtils.isAlphanumeric(sectionId),
                 "sectionId must be alphanumeric, was: " + sectionId);
@@ -33,7 +28,13 @@ class Section {
         room.reserve(this);
         this.room = room;
         this.subject = subject;
+        this.instructor = instructor;
     }
+
+    Section(String sectionId, Schedule schedule, Room room, Subject subject){
+        this(sectionId, schedule, room, subject, null);
+    }
+
 
     void checkSameSubject(Section other){
         notNull(other);
