@@ -31,8 +31,7 @@ class Room {
         this(name, capacity, Collections.emptyList());
     }
 
-
-
+    //TODO: check this getRoom() if it's still needed
     Room getRoom(){
         return new Room(this.name, this.capacity, this.sections);
     }
