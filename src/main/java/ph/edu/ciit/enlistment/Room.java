@@ -46,15 +46,6 @@ class Room {
         return String.format("Room name is %s, Capacity is %s", name, capacity);
     }
 
-    //TODO: 4th bullet, may not exceed the capacity of the room. (can be copied from enlist())
-    void checkRoomOverCapacity(int studentsToEnlist) {
-        if (this.capacity < studentsToEnlist) {
-            throw new RoomOverCapacityException(
-                    String.format("current room: %s has capacity: %s but is trying to enlist: %d",
-                                    this, capacity, studentsToEnlist));
-        }
-
-    }
 
     void reserve(Section newSection) {
         notNull(newSection);
@@ -69,6 +60,7 @@ class Room {
         });
         sections.add(newSection);
     }
+
     void checkCapacity(int occupancy){
         if (occupancy >= capacity) {
             throw new RoomOverCapacityException(
