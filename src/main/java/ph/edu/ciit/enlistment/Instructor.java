@@ -5,7 +5,7 @@ import java.util.*;
 import static org.apache.commons.lang3.Validate.*;
 
 class Instructor {
-    private int instructorID;
+    private final int instructorID;
     private Collection<Section> sections;
 
     Instructor(int instructorID, Collection<Section> sections) {
