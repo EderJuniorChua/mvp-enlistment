@@ -36,6 +36,7 @@ class Schedule {
         return result;
     }
 
+    //TODO: decide which exception to be called from this or the wrapper method
     boolean hasOverlap(Section other){
         if (this.equals(other.getSchedule())) {
             throw new ScheduleConflictException("current section: " + this +
