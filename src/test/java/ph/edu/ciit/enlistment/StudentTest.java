@@ -11,8 +11,9 @@ class StudentTest {
     void enlist_two_sections_no_sked_conflict() {
         // Given a student and two sections w/ no sked conflict
         Student student  = new Student (1);
-        Section sec1 = new Section("A", new Schedule(Days.MTH, Period.H0830));
-        Section sec2 = new Section("B", new Schedule(Days.TF, Period.H1000));
+
+        Section sec1 = new Section("A", new Schedule(Days.MTH, Period.H0830), new Room("room1", 30));
+        Section sec2 = new Section("B", new Schedule(Days.TF, Period.H1000), new Room("room1", 30));
         // When the student enlists in both sections
         student.enlist(sec1);
         student.enlist(sec2);
@@ -31,8 +32,8 @@ class StudentTest {
     void enlist_two_sections_same_sked() {
         // Given a student and two sections with same sked
         Student student  = new Student (1);
-        Section sec1 = new Section("A", new Schedule(Days.MTH, Period.H0830));
-        Section sec2 = new Section("B", new Schedule(Days.MTH, Period.H0830));
+        Section sec1 = new Section("A", new Schedule(Days.MTH, Period.H0830), new Room("room1", 30));
+        Section sec2 = new Section("B", new Schedule(Days.MTH, Period.H0830), new Room("room2", 30));
 
         // When student enlists in both sections
         student.enlist(sec1);

@@ -19,9 +19,9 @@ class Section {
     //TODO: (Allen) 2. A section must have an instructor. A class Instructor is pre requisite.
     //TODO: (Allen) 3. An instructor cannot teach two or more sections with overlapping schedule. This is to be made in new instructor class.
 
-    Section (String sectionId, Schedule schedule) {
-        this(sectionId, schedule, null);
-    }
+//    Section (String sectionId, Schedule schedule) {
+//        this(sectionId, schedule, null);
+//    }
 
     Section (String sectionId, Schedule schedule, Room room) {
         isBlank(sectionId);
