@@ -8,6 +8,7 @@ class Instructor {
     private int instructorID;
     private Schedule schedule;
     private Collection<Section> sections;
+
     Instructor(int instructorID, Collection<Section> sections, Schedule schedule) {
         notNull(sections);
         isTrue(instructorID >= 0,"instructorID must be non-zero, was : " + instructorID);
@@ -17,12 +18,13 @@ class Instructor {
         this.schedule = schedule;
     }
 
-    Instructor(int instructorID, int instructorID1, Schedule schedule, Collection<Section> sections) {
-        this(instructorID, Collections.emptyList());
-    }
-
-    public <T> Instructor(long instructorID, Collection<T> emptyList) {
-    }
+    //remove this and change Test
+//    Instructor(int instructorID, int instructorID1, Schedule schedule, Collection<Section> sections) {
+//        this(instructorID, Collections.emptyList());
+//    }
+//
+//    public <T> Instructor(long instructorID, Collection<T> emptyList) {
+//    }
 
     void assign(Section newSection) {
         notNull(newSection);
