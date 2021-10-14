@@ -5,26 +5,27 @@ import java.util.*;
 import static org.apache.commons.lang3.Validate.*;
 
 class Instructor {
-    private final int instructorID;
-    private final Schedule schedule;
-    private final Collection<Section> sections;
-    Instructor(int instructorID, Schedule schedule, Collection<Section> sections) {
+    private int instructorID;
+    private Schedule schedule;
+    private Collection<Section> sections;
+    Instructor(int instructorID, Collection<Section> sections, Schedule schedule) {
         notNull(sections);
         isTrue(instructorID >= 0,"instructorID must be non-zero, was : " + instructorID);
         this.sections = new HashSet<>(sections);
         this.sections.removeIf(Objects::isNull);
         this.instructorID = instructorID;
-        this.subject = subject;
+        this.schedule = schedule;
     }
-    Instructor(int instructorID) {
+    Instructor(int instructorID, int instructorID1, Schedule schedule, Collection<Section> sections) {
         this(instructorID, Collections.emptyList());
     }
-    void procured_section(Section newSection) {
-        notNull(newSection);
-        if (this.sections.isSimilar(other.sections))
-        throw new SameSubjectException(
-                    "This section" + this + "and other section " + other + " have same schedule."
-            );
+
+    public <T> Instructor(long instructorID, Collection<T> emptyList) {
     }
 
-}
+    boolean hasScheduleConflict(Section other) {
+        notNull(other);
+        return this.schedule.hasOverlap(other);
+    }
+    }
+
