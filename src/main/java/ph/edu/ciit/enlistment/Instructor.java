@@ -24,11 +24,6 @@ class Instructor {
     public <T> Instructor(long instructorID, Collection<T> emptyList) {
     }
 
-    boolean hasScheduleConflict(Section other) {
-        notNull(other);
-        return this.schedule.hasOverlap(other);
-    }
-
     void assign(Section newSection) {
         notNull(newSection);
         /*compare the schedules of new section with the schedules of the existing sections,
