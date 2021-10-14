@@ -32,10 +32,6 @@ class Section {
         this.instructor = instructor;
     }
 
-    Section(String sectionId, Schedule schedule, Room room, Subject subject){
-        this(sectionId, schedule, room, subject, null);
-    }
-
 
     void checkSameSubject(Section other){
         notNull(other);
