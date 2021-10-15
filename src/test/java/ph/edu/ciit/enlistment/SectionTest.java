@@ -11,8 +11,8 @@ public class SectionTest {
     void sections_have_same_room_but_overlapping_schedules() {
         Instructor instructor = new Instructor(1, Collections.emptyList());
         Room room1 = new Room("room1", 30);
-        Section sec1 = new Section("A", new Schedule(Days.MTH, Period.H0830), room1, new Subject("sub1"), instructor);
+        Section sec1 = new Section("A", new Schedule(Days.MTH, new Period(ClassValidHours.H0830, ClassValidHours.H1130)), room1, new Subject("sub1"), instructor);
 
-        assertThrows(ScheduleConflictException.class, () -> new Section("B", new Schedule(Days.MTH, Period.H0830), room1, new Subject("sub1"), instructor));
+        assertThrows(ScheduleConflictException.class, () -> new Section("B", new Schedule(Days.MTH, new Period(ClassValidHours.H0830, ClassValidHours.H1130)), room1, new Subject("sub1"), instructor));
     }
 }

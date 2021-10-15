@@ -10,8 +10,8 @@ public class InstructorTest {
     void instructor_has_sections_with_overlapping_schedule(){
         Student student  = new Student (1);
         Instructor instructor = new Instructor(1, Collections.emptyList());
-        Section sec1 = new Section("A", new Schedule(Days.MTH, Period.H0830), new Room("room1", 30), new Subject("sub1"), instructor);
+        Section sec1 = new Section("A", new Schedule(Days.MTH, new Period(ClassValidHours.H0830, ClassValidHours.H1130)), new Room("room1", 30), new Subject("sub1"), instructor);
 
-        assertThrows(ScheduleConflictException.class, () -> new Section("B", new Schedule(Days.MTH, Period.H0830), new Room("room1", 30), new Subject("sub2"), instructor));
+        assertThrows(ScheduleConflictException.class, () -> new Section("B", new Schedule(Days.MTH, new Period(ClassValidHours.H0830, ClassValidHours.H1130)), new Room("room1", 30), new Subject("sub2"), instructor));
     }
 }
