@@ -84,15 +84,18 @@ class StudentTest {
     @Test
     void enlist_in_sections_overlapping_with_currently_enlisted_sections(){
         Student student1 = new Student(1);
+
         Instructor instructor = new Instructor(1, Collections.emptyList());
         Subject subjectMath = new Subject("math");
         Section section= new Section("A",new Schedule(Days.MTH, new Period(ClassValidHours.H0830, ClassValidHours.H1130)), new Room("RM603", 1), subjectMath, instructor);
+        student1.enlist(section);
 
+        Instructor instructor2 = new Instructor(2, Collections.emptyList());
         Subject subjectEnglish = new Subject("english");
-        Section section2= new Section("B",new Schedule(Days.MTH, new Period(ClassValidHours.H0830, ClassValidHours.H1130)), new Room("RM603", 1), subjectMath, instructor);
+        Section section2= new Section("B",new Schedule(Days.MTH, new Period(ClassValidHours.H1000, ClassValidHours.H1130)), new Room("RM604", 1), subjectEnglish, instructor2);
 
-
-        assertThrows(PrerequisiteException.class, () -> student1.enlist(section));
+        //Todo: Catch ScheduleConflictException when enlisting in section that overlaps start and end period with currently enlisted sections
+        assertThrows(ScheduleConflictException.class, () -> student1.enlist(section2));
     }
 
     @Test
