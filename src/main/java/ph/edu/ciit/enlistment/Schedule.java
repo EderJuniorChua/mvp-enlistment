@@ -1,5 +1,7 @@
 package ph.edu.ciit.enlistment;
 
+import java.util.Objects;
+
 import static org.apache.commons.lang3.Validate.*;
 
 class Schedule {
@@ -22,18 +24,13 @@ class Schedule {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Schedule schedule = (Schedule) o;
-
-        if (days != schedule.days) return false;
-        return period == schedule.period;
+        return days == schedule.days && period.equals(schedule.period);
     }
 
     @Override
     public int hashCode() {
-        int result = days != null ? days.hashCode() : 0;
-        result = 31 * result + (period != null ? period.hashCode() : 0);
-        return result;
+        return Objects.hash(days, period);
     }
 
     boolean hasOverlap(Section other){
@@ -54,7 +51,22 @@ class Period{
         this.start = start;
         this.end = end;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Period period = (Period) o;
+        return start == period.start && end == period.end;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(start, end);
+    }
 }
 enum ClassValidHours {
     H0830, H0900,H1000, H1130, H1300, H1430, H1600
+
 }
