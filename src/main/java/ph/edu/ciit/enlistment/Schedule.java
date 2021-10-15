@@ -46,7 +46,15 @@ enum Days {
     MTH, TF, WS
 }
 
+class Period{
+    private final ClassValidHours start;
+    private final ClassValidHours end;
 
-enum Period {
-    H0830, H1000, H1130, H1300, H1430, H1600
+    Period(ClassValidHours start, ClassValidHours end){
+        this.start = start;
+        this.end = end;
+    }
+}
+enum ClassValidHours {
+    H0830, H0900,H1000, H1130, H1300, H1430, H1600
 }
