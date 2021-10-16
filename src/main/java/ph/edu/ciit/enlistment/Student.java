@@ -7,17 +7,19 @@ import static org.apache.commons.lang3.Validate.*;
 class Student {
     private final int studentNumber;
     private final Collection<Section> sections;
+    private final Collection<Subject> subjectsTaken;
 
-    Student(int studentNumber, Collection<Section> sections) {
+    Student(int studentNumber, Collection<Section> sections, Collection<Subject> subjectsTaken) {
         isTrue(studentNumber >= 0,"studentNumber must be non-zero, was : " + studentNumber);
         notNull(sections);
         this.sections = new HashSet<>(sections);
         this.sections.removeIf(Objects::isNull);
+        this.subjectsTaken = new HashSet<>(subjectsTaken);
         this.studentNumber = studentNumber;
     }
 
     Student (int studentNumber) {
-        this(studentNumber, Collections.emptyList());
+        this(studentNumber, Collections.emptyList(), Collections.emptyList());
     }
 
     void enlist(Section newSection) {
@@ -30,6 +32,7 @@ class Student {
                     + currSection.getSchedule() + " has schedule conflict with new section " + newSection
                     + " at schedule " + newSection.getSchedule());
             }
+            currSection.checkSameSubject(newSection);
         });
 
         newSection.checkPrereq(subjectsTaken);
@@ -40,6 +43,14 @@ class Student {
         } finally {
             newSection.unlock();
         }
+    }
+
+    void delist(Section existingSection){
+        notNull(existingSection);
+
+        if (!sections.contains(existingSection)) throw new StudentDelistException("error delisting " + existingSection + ", does not exist");
+        else sections.remove(existingSection);
+
     }
 
     Collection<Section> getSections() {
