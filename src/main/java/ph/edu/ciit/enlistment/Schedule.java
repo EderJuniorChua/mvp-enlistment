@@ -67,6 +67,7 @@ class Period{
     }
 }
 enum Hours {
-    H0830, H0900,H1000, H1130, H1300, H1430, H1600
+    //TODO: Add all the valid hours
+    H0830, H0900, H1000, H1130, H1300, H1430, H1600
 
 }
