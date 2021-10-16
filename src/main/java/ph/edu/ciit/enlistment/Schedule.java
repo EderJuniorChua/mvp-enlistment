@@ -44,10 +44,10 @@ enum Days {
 }
 
 class Period{
-    private final ClassValidHours start;
-    private final ClassValidHours end;
+    private final Hours start;
+    private final Hours end;
 
-    Period(ClassValidHours start, ClassValidHours end){
+    Period(Hours start, Hours end){
         this.start = start;
         this.end = end;
     }
@@ -66,7 +66,7 @@ class Period{
         return Objects.hash(start, end);
     }
 }
-enum ClassValidHours {
+enum Hours {
     H0830, H0900,H1000, H1130, H1300, H1430, H1600
 
 }
