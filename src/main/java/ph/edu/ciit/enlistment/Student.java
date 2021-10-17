@@ -4,7 +4,7 @@ import java.util.*;
 
 import static org.apache.commons.lang3.Validate.*;
 
-class Student {
+class  Student {
     private final int studentNumber;
     private final Collection<Section> sections;
     private final Collection<Subject> subjectsTaken;
