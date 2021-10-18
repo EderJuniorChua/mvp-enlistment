@@ -13,6 +13,10 @@ class Schedule {
         notNull(period);
         this.days = days;
         this.period = period;
+
+        //Todo: Cat - Resolve issue #4
+        //when days are equal and period.hasOverlap
+        //throw ScheduleConflictException
     }
 
     @Override
@@ -55,6 +59,8 @@ class Period{
         //when start time is before end time
         //throw InvalidScheduleException
     }
+
+    //hasOverlap() - return true when given period is overlapping with other period
 
 
     @Override
