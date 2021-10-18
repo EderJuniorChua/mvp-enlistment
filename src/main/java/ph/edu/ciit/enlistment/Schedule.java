@@ -13,6 +13,10 @@ class Schedule {
         notNull(period);
         this.days = days;
         this.period = period;
+
+        //Todo: Cat - Resolve issue #4
+        //when days are equal and period.hasOverlap
+        //throw ScheduleConflictException
     }
 
     @Override
@@ -50,7 +54,13 @@ class Period{
     Period(Hours start, Hours end){
         this.start = start;
         this.end = end;
+
+        //Todo: Allen - Resolve issue #3
+        //when start time is before end time
+        //throw InvalidPeriodException
     }
+
+    //hasOverlap() - return true when given period is overlapping with other period
 
 
     @Override
@@ -67,7 +77,5 @@ class Period{
     }
 }
 enum Hours {
-    //TODO: Add all the valid hours
-    H0830, H0900, H1000, H1130, H1300, H1430, H1600
-
+    H0830, H0900, H0930, H1000, H1030, H1100, H1130, H1200, H1230, H1300, H1330, H1400, H1430, H1500, H1530, H1600, H1630, H1700, H1730
 }
