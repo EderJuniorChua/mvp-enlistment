@@ -50,6 +50,10 @@ class Period{
     Period(Hours start, Hours end){
         this.start = start;
         this.end = end;
+
+        //Todo: Allen - Resolve issue #3
+        //when start time is before end time
+        //throw InvalidScheduleException
     }
 
 
