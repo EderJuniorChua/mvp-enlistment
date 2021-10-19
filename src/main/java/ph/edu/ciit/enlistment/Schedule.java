@@ -55,9 +55,18 @@ class Period{
         this.start = start;
         this.end = end;
 
+        int starts = start.ordinal();
+        int ends = end.ordinal();
+
+        System.out.println("Value of start is: " + starts);
+        System.out.println("Value of ends is: " + ends);
+        if (ends < starts)
+        {
+            throw new InvalidPeriodException("Error");
+        }
         //Todo: Allen - Resolve issue #3
         //when start time is before end time
-        //throw InvalidPeriodeException
+        //throw InvalidPeriodException
     }
 
     //hasOverlap() - return true when given period is overlapping with other period
