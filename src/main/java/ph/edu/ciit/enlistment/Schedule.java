@@ -66,6 +66,14 @@ class Period{
     //hasOverlap() - return true when given period is overlapping with other period
 
 
+    public Hours getStart() {
+        return start;
+    }
+
+    public Hours getEnd() {
+        return end;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
