@@ -56,6 +56,8 @@ class Period{
     private final Hours end;
 
     Period(Hours start, Hours end){
+        notNull(start);
+        notNull(end);
         //https://jvm-gaming.org/t/beware-of-enum-values/41208
         //https://dzone.com/articles/memory-hogging-enumvalues-method
         //Hours.values() = immutable newly copied array (defensive copy)
