@@ -52,8 +52,11 @@ class Period{
     private final Hours end;
 
     Period(Hours start, Hours end){
-        this.start = start;
-        this.end = end;
+        //https://jvm-gaming.org/t/beware-of-enum-values/41208
+        //https://dzone.com/articles/memory-hogging-enumvalues-method
+        //Hours.values = immutable newly copied array (defensive copy)
+        this.start = Hours.values()[start.ordinal()];
+        this.end = Hours.values()[end.ordinal()];
 
         //Todo: Allen - Resolve issue #3
         //when start time is before end time
