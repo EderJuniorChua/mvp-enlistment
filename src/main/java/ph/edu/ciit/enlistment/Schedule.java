@@ -57,7 +57,7 @@ class Period{
 
         //Todo: Allen - Resolve issue #3
         //when start time is before end time
-        //throw InvalidScheduleException
+        //throw InvalidPeriodeException
     }
 
     //hasOverlap() - return true when given period is overlapping with other period
