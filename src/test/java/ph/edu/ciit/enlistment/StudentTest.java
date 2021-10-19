@@ -98,6 +98,17 @@ class StudentTest {
     }
 
     @Test
+    void enlist_in_section_with_invalid_period_end_time_before_start_time(){
+        Student student1 = new Student(1);
+
+        Instructor instructor = new Instructor(1, Collections.emptyList());
+        Subject subjectMath = new Subject("math");
+        Section section= new Section("A",new Schedule(Days.MTH, new Period(Hours.H1130, Hours.H0830)), new Room("RM603", 1), subjectMath, instructor);
+
+        assertThrows(InvalidPeriodException.class, () -> student1.enlist(section));
+    }
+
+    @Test
     void delist_unexisting_section(){
         Instructor instructor = new Instructor(1, Collections.emptyList());
         Student student1 = new Student(1);
