@@ -40,7 +40,6 @@ class Schedule {
                 this.period.endHourOverlapsWith(other.period)));
     }
 
-
 }
 
 enum Days {
@@ -70,7 +69,6 @@ class Period{
 
     }
 
-    //hasOverlap() - return true when given period is overlapping with other period
     boolean startHourOverlapsWith(Period other){
         return other.end.ordinal() > this.start.ordinal() &&
                 this.start.ordinal() >= other.start.ordinal();
@@ -93,6 +91,7 @@ class Period{
         return Objects.hash(start, end);
     }
 }
+
 enum Hours {
     H0830, H0900, H0930, H1000, H1030, H1100, H1130, H1200, H1230, H1300, H1330, H1400, H1430, H1500, H1530, H1600, H1630, H1700, H1730
 }

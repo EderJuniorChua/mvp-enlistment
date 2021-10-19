@@ -31,7 +31,6 @@ class Room {
         this(name, capacity, Collections.emptyList());
     }
 
-
     int getCapacity(){
         return capacity;
     }
@@ -40,7 +39,6 @@ class Room {
     public String toString() {
         return String.format("Room name is %s, Capacity is %s", name, capacity);
     }
-
 
     void reserve(Section newSection) {
         notNull(newSection);
@@ -63,6 +61,5 @@ class Room {
 
         }
     }
-
 
 }
