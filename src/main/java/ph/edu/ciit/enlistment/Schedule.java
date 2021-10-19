@@ -73,11 +73,11 @@ class Period{
 
 
     public Hours getStart() {
-        return start;
+        return Hours.values()[start.ordinal()];
     }
 
     public Hours getEnd() {
-        return end;
+        return Hours.values()[end.ordinal()];
     }
 
     @Override
