@@ -63,8 +63,7 @@ class Period{
         int starts = start.ordinal();
         int ends = end.ordinal();
 
-        //Todo: Allen - Resolve issue #3
-        if (ends < starts)
+        if (ends <= starts)
         {
             throw new InvalidPeriodException(String.format("Period End (%s) is before Period Start (%s).", start, end));
         }
