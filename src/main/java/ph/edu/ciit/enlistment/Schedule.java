@@ -54,7 +54,7 @@ class Period{
     Period(Hours start, Hours end){
         //https://jvm-gaming.org/t/beware-of-enum-values/41208
         //https://dzone.com/articles/memory-hogging-enumvalues-method
-        //Hours.values = immutable newly copied array (defensive copy)
+        //Hours.values() = immutable newly copied array (defensive copy)
         this.start = Hours.values()[start.ordinal()];
         this.end = Hours.values()[end.ordinal()];
 
