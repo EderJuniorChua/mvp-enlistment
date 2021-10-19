@@ -14,9 +14,6 @@ class Schedule {
         this.days = days;
         this.period = period;
 
-        //Todo: Cat - Resolve issue #4
-        //when days are equal and period.hasOverlap
-        //throw ScheduleConflictException
     }
 
     @Override

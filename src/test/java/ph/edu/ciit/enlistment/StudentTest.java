@@ -94,7 +94,6 @@ class StudentTest {
         Subject subjectEnglish = new Subject("english");
         Section section2= new Section("B",new Schedule(Days.MTH, new Period(Hours.H1000, Hours.H1130)), new Room("RM604", 1), subjectEnglish, instructor2);
 
-        //Todo: Catch ScheduleConflictException when enlisting in section that overlaps start and end period with currently enlisted sections
         assertThrows(ScheduleConflictException.class, () -> student1.enlist(section2));
     }
 
