@@ -36,11 +36,10 @@ class Schedule {
 
     boolean hasOverlap(Schedule other){
         return (this.days.equals(other.days) &&
-                ((this.period.getStart().ordinal() < other.period.getEnd().ordinal() &&
-                  other.period.getEnd().ordinal() <= this.period.getEnd().ordinal()) ||
-                  this.period.getEnd().ordinal() > other.period.getStart().ordinal() &&
-                  other.period.getStart().ordinal() >= this.period.getStart().ordinal()));
+                (this.period.startHourOverlapsWith(other.period) ||
+                this.period.endHourOverlapsWith(other.period)));
     }
+
 
 }
 
@@ -73,7 +72,14 @@ class Period{
     }
 
     //hasOverlap() - return true when given period is overlapping with other period
-
+    boolean startHourOverlapsWith(Period other){
+        return other.end.ordinal() > this.start.ordinal() &&
+                this.start.ordinal() >= other.start.ordinal();
+    }
+    boolean endHourOverlapsWith(Period other){
+        return other.start.ordinal() < this.end.ordinal() &&
+                this.end.ordinal() <= other.end.ordinal();
+    }
 
     public Hours getStart() {
         return Hours.values()[start.ordinal()];
