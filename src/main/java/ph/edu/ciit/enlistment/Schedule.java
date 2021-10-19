@@ -34,12 +34,12 @@ class Schedule {
         return Objects.hash(days, period);
     }
 
-    boolean hasOverlap(Section other){
-        return (this.days.equals(other.getSchedule().days) &&
-                ((this.period.getStart().ordinal() < other.getSchedule().period.getEnd().ordinal() &&
-                 other.getSchedule().period.getEnd().ordinal() <= this.period.getEnd().ordinal()) ||
-                  this.period.getEnd().ordinal() > other.getSchedule().period.getStart().ordinal() &&
-                other.getSchedule().period.getStart().ordinal() >= this.period.getStart().ordinal()));
+    boolean hasOverlap(Schedule other){
+        return (this.days.equals(other.days) &&
+                ((this.period.getStart().ordinal() < other.period.getEnd().ordinal() &&
+                  other.period.getEnd().ordinal() <= this.period.getEnd().ordinal()) ||
+                  this.period.getEnd().ordinal() > other.period.getStart().ordinal() &&
+                  other.period.getStart().ordinal() >= this.period.getStart().ordinal()));
     }
 
 }

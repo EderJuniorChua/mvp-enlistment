@@ -44,7 +44,7 @@ class Section {
 
     boolean hasScheduleConflict(Section other) {
         notNull(other);
-        return this.schedule.hasOverlap(other);
+        return this.schedule.hasOverlap(other.getSchedule());
     }
 
     @Override
