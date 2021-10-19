@@ -38,7 +38,11 @@ class Schedule {
     }
 
     boolean hasOverlap(Section other){
-        return (this.equals(other.getSchedule()));
+        return (this.days.equals(other.getSchedule().days) &&
+                ((this.period.getStart().ordinal() < other.getSchedule().period.getEnd().ordinal() &&
+                 other.getSchedule().period.getEnd().ordinal() <= this.period.getEnd().ordinal()) ||
+                  this.period.getEnd().ordinal() > other.getSchedule().period.getStart().ordinal() &&
+                other.getSchedule().period.getStart().ordinal() >= this.period.getStart().ordinal()));
     }
 
 }
