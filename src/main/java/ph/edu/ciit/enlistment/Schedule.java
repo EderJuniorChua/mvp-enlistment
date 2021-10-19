@@ -80,14 +80,6 @@ class Period{
                 this.end.ordinal() <= other.end.ordinal();
     }
 
-    public Hours getStart() {
-        return Hours.values()[start.ordinal()];
-    }
-
-    public Hours getEnd() {
-        return Hours.values()[end.ordinal()];
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
